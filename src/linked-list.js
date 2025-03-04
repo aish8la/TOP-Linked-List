@@ -146,6 +146,8 @@ export class LinkedList {
   removeAt(index) {
     let size = this.size();
 
+    if (index >= size) return;
+
     if (index === 0) {
       this.#head = this.#head.nextNode;
       return;
@@ -155,8 +157,6 @@ export class LinkedList {
       this.pop();
       return;
     }
-
-    if (index >= size) return;
 
     let targetNode = this.#head;
     let prevNode = null;
