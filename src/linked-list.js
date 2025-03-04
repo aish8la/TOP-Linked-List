@@ -2,6 +2,14 @@ export class LinkedList {
     #head = null;
     #tail = null;
 
+    get head() {
+        return this.#head;
+    }
+
+    get tail() {
+        return this.#tail;
+    }
+
     createNode(value, nextNode) {
         return new Node(value, nextNode);
     }
