@@ -6,6 +6,7 @@ export class LinkedList {
         return new Node(value, nextNode);
     }
 
+    //Add node to end of list
     append(value) {
         const newNode = this.createNode(value, null);
         if(this.#tail === null) {
@@ -13,6 +14,16 @@ export class LinkedList {
         } else {
             this.#tail.nextNode = newNode;
             this.#tail = newNode;
+        }
+    }
+
+    //Add node to start of list
+    prepend(value) {
+        const newNode = this.createNode(value, this.#head);
+        if(this.#head === null) {
+            this.#head = this.#tail = newNode;
+        } else {
+            this.#head = newNode;
         }
     }
 }

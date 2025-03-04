@@ -4,3 +4,4 @@ const list = new LinkedList();
 
 list.append("A");
 list.append("B");
+list.prepend("D");
