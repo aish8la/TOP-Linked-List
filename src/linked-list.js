@@ -61,6 +61,25 @@ export class LinkedList {
 
         return currentNode;
     }
+
+    pop() {
+        if(this.#head === null) return;
+
+        let currentNode = this.#head;
+
+        if (currentNode.nextNode === null) {
+            this.#head = this.#tail = null;
+            return;
+        }
+
+        //Iterates until next node is tail node
+        while(currentNode.nextNode.nextNode !== null) {
+            currentNode = currentNode.nextNode;
+        }
+
+        currentNode.nextNode = null;
+        this.#tail = currentNode;
+    }
 }
 
 class Node {
