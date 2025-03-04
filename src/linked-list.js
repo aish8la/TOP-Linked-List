@@ -115,6 +115,36 @@ export class LinkedList {
 
         return string += "null";
     }
+
+    insertAt(value, index) {
+
+        //If index is start of list call prepend
+        if(index === 0) {
+            this.prepend(value);
+            return;
+        }
+
+        let size = this.size();
+
+        //If index exceeds index of last existing node returns without modifying the list
+        if(index > size - 1) return;
+
+        let targetNode = this.#head;
+        let prevNode = null;
+
+        let i = 0;
+
+        //iterates over the list until the desired index is reached and records the existing node at the desired index and the node before it
+        while(index > i) {
+            prevNode = targetNode;
+            targetNode = targetNode.nextNode;
+            i++;
+        }
+
+        //once the desired index is reached modifies the next of the node before the existing node to point to a new node with given value and sets it's next to point to the existing node at the desired index.
+        prevNode.nextNode = this.createNode(value, targetNode);
+
+    }
 }
 
 class Node {
