@@ -145,6 +145,36 @@ export class LinkedList {
         prevNode.nextNode = this.createNode(value, targetNode);
 
     }
+
+    removeAt(index) {
+
+        let size = this.size();
+
+        if(index === 0) {
+            this.#head = this.#head.nextNode;
+            return;
+        }
+
+        if(index === size - 1) {
+            this.pop();
+            return
+        }
+
+        if(index >= size) return;
+
+        let targetNode = this.#head;
+        let prevNode = null;
+        let i = 0;
+
+        while(index > i) {
+            prevNode = targetNode;
+            targetNode = targetNode.nextNode;
+            i++;
+        }
+
+        prevNode.nextNode = targetNode.nextNode;
+
+    }
 }
 
 class Node {
