@@ -46,6 +46,21 @@ export class LinkedList {
 
         return count;
     }
+
+    at(index) {
+
+        if(index > (this.size() - 1) || index < 0) return null;
+
+        let currentNode = this.#head;
+        let i = 0;
+
+        while(index > i) {
+            currentNode = currentNode.nextNode;
+            i++;
+        } 
+
+        return currentNode;
+    }
 }
 
 class Node {
