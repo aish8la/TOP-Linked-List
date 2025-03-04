@@ -1,7 +1,12 @@
 import { LinkedList } from "./linked-list.js";
 
+// example uses class syntax - adjust as necessary
 const list = new LinkedList();
 
-list.append("A");
-list.append("B");
-list.prepend("D");
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+console.log(list.toString());
