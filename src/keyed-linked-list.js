@@ -97,4 +97,83 @@ class KeyedNode {
         return false;
     }
 
+    find(key) {
+        let currentNode = this.#head;
+        let index = 0;
+    
+        while (currentNode !== null) {
+          if (currentNode.key === key) return index;
+          currentNode = currentNode.nextNode;
+          index++;
+        }
+    
+        return null;
+    }
+
+    toString() {
+        let currentNode = this.#head;
+        let string = "";
+        while (currentNode !== null) {
+          string += `( ${currentNode.key}: ${currentNode.value} ) -> `;
+          currentNode = currentNode.nextNode;
+        }
+    
+        return (string += "null");
+    }
+
+    insertAt(key, value, index) {
+        //If index is start of list call prepend
+        if (index === 0) {
+          this.prepend(key, value);
+          return;
+        }
+    
+        let size = this.size();
+    
+        //If index exceeds index of last existing node returns without modifying the list
+        if (index > size - 1) return;
+    
+        let targetNode = this.#head;
+        let prevNode = null;
+    
+        let i = 0;
+    
+        //iterates over the list until the desired index is reached and records the existing node at the desired index and the node before it
+        while (index > i) {
+          prevNode = targetNode;
+          targetNode = targetNode.nextNode;
+          i++;
+        }
+    
+        //once the desired index is reached modifies the next of the node before the existing node to point to a new node with given value and sets it's next to point to the existing node at the desired index.
+        prevNode.nextNode = this.createNode(key, value, targetNode);
+    }
+    
+      removeAt(index) {
+        let size = this.size();
+    
+        if (index >= size) return;
+    
+        if (index === 0) {
+          this.#head = this.#head.nextNode;
+          return;
+        }
+    
+        if (index === size - 1) {
+          this.pop();
+          return;
+        }
+    
+        let targetNode = this.#head;
+        let prevNode = null;
+        let i = 0;
+    
+        while (index > i) {
+          prevNode = targetNode;
+          targetNode = targetNode.nextNode;
+          i++;
+        }
+    
+        prevNode.nextNode = targetNode.nextNode;
+    }
   }
