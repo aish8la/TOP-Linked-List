@@ -5,3 +5,16 @@ class KeyedNode {
       this.nextNode = nextNode;
     }
   }
+
+  class KeyedLinkedList {
+    #head = null;
+    #tail = null;
+  
+    get head() {
+      return this.#head;
+    }
+  
+    get tail() {
+      return this.#tail;
+    }
+  }
