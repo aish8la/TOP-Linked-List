@@ -6,7 +6,7 @@ class KeyedNode {
   }
 }
 
-class KeyedLinkedList {
+export class KeyedLinkedList {
   #head = null;
   #tail = null;
 
